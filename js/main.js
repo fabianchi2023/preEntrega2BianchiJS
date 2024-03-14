@@ -82,10 +82,12 @@ while (nombre === "" || nombre == null || nombre.length < 3) {
 let seleccionMenu = parseInt(prompt(nombre + ", que servicios deseas reservar? (0 o 'Enter' para finalizar): \n\n" + mostrarServicios()))
 if (seleccionMenu == 0 || seleccionMenu == ""){
   alert("No has seleccionado ningun servicio.")
+} else if(seleccionMenu > servicios.length) {
+  alert("El servicio seleccionado no existe")
 } else {
   while (seleccionMenu != 0){
     reserva.agregarServicio(seleccionMenu)
-    seleccionMenu = parseInt(prompt(nombre + " , que servicios deseas reservar? (0 para finalizar): \n\n" + mostrarServicios()))
+    seleccionMenu = parseInt(prompt(nombre + " , deseas agregar otro servicio? (0 para finalizar): \n\n" + mostrarServicios()))
   }
   
   let listaReserva = nombre + " has seleccionado los siguientes items:\n\n" + reserva.mostrarReserva();
@@ -102,7 +104,7 @@ if (seleccionMenu == 0 || seleccionMenu == ""){
     alert("Su reserva ha sido cancelada")
 
   }
-
 }
+
 
 alert("Gracias por visitarnos! Te esperamos pronto "+ nombre)
